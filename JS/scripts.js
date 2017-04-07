@@ -7,3 +7,14 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-93502866-1', 'auto');
 ga('send', 'pageview');
 
+$(document).ready(function(){
+    $("textarea.chinese").chineseInput({
+        debug: false, // print debug messages
+        input: {
+            initial: 'traditional', // or 'simplified'
+            allowChange: true // allow transition between traditional and simplified
+        },
+        allowHide: true, // allow the chinese input to be switched off
+        active: true // whether or not the plugin should be active by default
+    });
+});
