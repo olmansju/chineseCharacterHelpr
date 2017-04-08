@@ -8,7 +8,7 @@ ga('create', 'UA-93502866-1', 'auto');
 ga('send', 'pageview');
 
 $(document).ready(function(){
-    $("textarea.chinese").chineseInput({
+    $("input.chinese").chineseInput({
         debug: false, // print debug messages
         input: {
             initial: 'traditional', // or 'simplified'
