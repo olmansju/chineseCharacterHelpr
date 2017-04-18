@@ -1,2 +1,35 @@
 # chineseCharacterHelpr
 Chinese Character Helpr -- An augmented input method for Chinese character writing and learning
+
+# Members
+## Justin Olmanson
+### Title
+contact: jolmanson2@unl.edu
+--Justin Bio goes here
+
+## Xianquan Liu
+### Title
+contact: crystal040524@gmail.com
+-- Crystal bio goes here
+
+## Juana Paramo
+### Title
+contact: juanaparamoreyes@gmail.com
+-- Juana info goes here
+
+## Shawn Hellwege
+### Web Developer
+contact: shellwe@gmail.com
+Shawn was involved in this web application as his final project masters program at the University of Nebraska - Lincoln. Shawn is a professional web developer in the commercial sector in Lincoln Nebraska.
+
+
+# Setup
+## Repository
+As you see, the repository for this web application is on Github. If you would like to contribute please feel free to branch the project and use it for your purposes. If you feel your code can contibute please do not hesitate to submit a pull request to upload your changes or contact Justin at jolmanson2@unl.edu.
+## Modules
+The components for this project were set up with Node.js. You can download the latest node.js and then from a command window (cmd on windows or terminal on mac) in administrator navigate out to the site project and type "npm install" this will install all node projects automatically. The projcts are not synced with github because the complex directory tree can cause issues with some operating systems. That and the files should not need to be modified so there is no need to share changes. If that is needed we can explore that.
+## CSS compiling
+I also use gruntjs as a SASS preprocessor to CSS. This allows for the organiztion of our styling and will greatly aid in making this site responsive.
+
+## File structure
+This I will type of later, will largely depend on whether we use angular.
