@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		sass: { // Task
 			dist: { // Target
 				files: {
-					'style.css': 'scss/style.scss' // 'destination': 'source'
+					'styles.css': 'scss/styles.scss' // 'destination': 'source'
 				}
 			}
 		},
