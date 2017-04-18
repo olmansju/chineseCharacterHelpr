@@ -21,11 +21,10 @@ $(document).ready(function () {
             initial: 'traditional', // or 'simplified'
             allowChange: true // allow transition between traditional and simplified
         },
-        allowHide: true, // allow the chinese input to be switched off
+        allowHide: false, // allow the chinese input to be switched off
         active: true // whether or not the plugin should be active by default
     });
 });
-
 
 $("input").keyup(function () {
     var obj = $("#chinese-ime li");

@@ -27,4 +27,13 @@
   #chinese-ime ul.options li.current {
     background: #eee; }
 
+textarea {
+  font-size: 18px;
+  font-family: 'open sans', arial, sans-serif; }
+  textarea .chinese {
+    width: 410px;
+    height: 200px;
+    border: 5px solid #aaa;
+    padding: 10px; }
+
 /*# sourceMappingURL=styles.css.map */
