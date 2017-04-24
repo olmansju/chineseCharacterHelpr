@@ -2,7 +2,9 @@
 
 <head>
     <title>Chinese Character Helpr</title>
-    <meta name="http-equiv" content="Content-type: text/html; charset=UTF-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta charset="utf-8"> 
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
@@ -14,11 +16,13 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
-    <p>Below are some examples of the word 猫 from different voices, which should be sound like mao but they aren't, I swear they were when I tested a few days ago so I'm not sure what's up</p>
+    <p>Above is a box where you type the word and it displays the options and you can chose one to go in the box by typing the correlating number. This is the functionality I need to break so the output goes into an array which is automatically updated.</p>
+    <p>Below are some examples of the word 猫 from different voices, ideally I want it to work with a function (the last one) but that is broken at the moment.</p>
     <input type="button" value="Chinese Female" onclick="responsiveVoice.speak('猫', 'Chinese Female')">
     <input type="button" value="Chinese (Hong Kong) Female" onclick="responsiveVoice.speak('猫', 'Chinese (Hong Kong) Female')">
     <input type="button" value="Chinese Taiwan Female" onclick="responsiveVoice.speak('猫', 'Chinese Taiwan Female')">
     <input type="button" value="play from function" onclick="ResponsiveVoice('猫')">
+    <p>The app will require dozens of hours of styling and functionality but all the pieces are there except the images... I need to invest a few hours into looking into APIs. I sent out some feelers but haven't gotten much from people.</p>
 
     <!-- Load this script if you want traditional character support -->
     <!--<script type="text/javascript" charset="utf-8" src="js/trad_chars.js"></script>-->
