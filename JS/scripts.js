@@ -18,8 +18,8 @@ $(document).ready(function () {
     $("textarea.chinese").chineseInput({
         debug: false, // print debug messages
         input: {
-            initial: 'traditional', // or 'simplified'
-            allowChange: true // allow transition between traditional and simplified
+            initial: 'simplified', // or 'traditional'
+            allowChange: false // allow transition between traditional and simplified
         },
         allowHide: false, // allow the chinese input to be switched off
         active: true // whether or not the plugin should be active by default
@@ -34,3 +34,7 @@ $("input").keyup(function () {
     // console.log(arr_list_items);
     alert(arr);
 });
+
+function ResponsiveVoice(character) {
+    return responsiveVoice.speak(character, 'Chinese Female');
+}

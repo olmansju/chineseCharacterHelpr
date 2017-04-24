@@ -2,9 +2,6 @@
 
 <head>
     <title>Chinese Character Helpr</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-
     <meta name="http-equiv" content="Content-type: text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
@@ -14,13 +11,17 @@
     <div class="container">
         <textarea class="chinese"></textarea>
     </div>
-
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+    <p>Below are some examples of the word 猫 from different voices, which should be sound like mao but they aren't, I swear they were when I tested a few days ago so I'm not sure what's up</p>
+    <input type="button" value="Chinese Female" onclick="responsiveVoice.speak('猫', 'Chinese Female')">
+    <input type="button" value="Chinese (Hong Kong) Female" onclick="responsiveVoice.speak('猫', 'Chinese (Hong Kong) Female')">
+    <input type="button" value="Chinese Taiwan Female" onclick="responsiveVoice.speak('猫', 'Chinese Taiwan Female')">
+    <input type="button" value="play from function" onclick="ResponsiveVoice('猫')">
 
     <!-- Load this script if you want traditional character support -->
-    <script type="text/javascript" charset="utf-8" src="js/trad_chars.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="js/trad_chars.js"></script>-->
     <!-- Load this script if you want support for adding the text at the caret position -->
     <script type="text/javascript" src="js/caret.js"></script>
     <!-- The actual script -->
