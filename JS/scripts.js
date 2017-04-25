@@ -35,6 +35,6 @@ $("input").keyup(function () {
     alert(arr);
 });
 
-function ResponsiveVoice(character) {
+function myResponsiveVoice(character) {
     return responsiveVoice.speak(character, 'Chinese Female');
 }
