@@ -38,3 +38,6 @@ $("input").keyup(function () {
 function myResponsiveVoice(character) {
     return responsiveVoice.speak(character, 'Chinese Female');
 }
+
+encodedCurrentChineseCharacter = encodeURIComponent('sampletext');
+flickrApiUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=d592362beec3f98703d88ff5d1d35647&text='+encodedCurrentChineseCharacter+'&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
