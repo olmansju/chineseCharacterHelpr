@@ -52,19 +52,47 @@ CurrentPhotoFarm = null;
 CurrentPhotoTitle = null;
 CurrentPhotoUrl = 'https://farm'+CurrentPhotoFarm+'.staticflickr.com/'+CurrentPhotoServer+'/'+CurrentPhotoId+'_'+CurrentPhotoSecret+'_n.jpg'
 
-$.getJSON( flickrApiUrl, function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
-    items.push( "<li id='" + key + "'>" + val + "</li>" );
-  });
+// $.getJSON( flickrApiUrl, function( data ) {
+//   var items = [];
+//   $.each( data, function( key, val ) {
+//     items.push( "<li id='" + key + "'>" + val + "</li>" );
+//   });
  
-  $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-  }).appendTo( "body" );
-});
+//   $( "<ul/>", {
+//     "class": "my-new-list",
+//     html: items.join( "" )
+//   }).appendTo( "body" );
+// });
 
-$.get( flickrApiUrl, function( data ) {
-  $( ".result" ).html( data );
-  alert( "Load was performed." );
-});
+// $.get( flickrApiUrl, function( data ) {
+//   $( ".result" ).html( data );
+//   alert( "Load was performed." );
+// });
+
+$("button").on("click", handleButtonClick);
+
+function jsonFlickrFeed(json) {
+  console.log(json);
+  
+  $.each(json.items, function(i, item) {
+    $("<img />").attr("src", item.media.m).appendTo("#images");
+  });
+};
+
+function handleButtonClick() {
+  $("button").remove();
+  
+  $.ajax({
+    url: 'https://api.flickr.com/services/feeds/photos_public.gne',
+    dataType: 'jsonp',
+    data: { "tags": "kitten", "format": "json" }
+  });
+}
+
+var n = JSON.parse(flickrApiUrl)  //x is the json returned from the url.
+var _s = n.photos.photo;
+for(var z = 0 ; z < n.photos.photo.length ; z++)
+{
+   var CurrentPhotoUrl = 'https://farm'+_s[z]['farm']+'.staticflickr.com/'+_s[z]['server']+'/'+_s[z]['id']+'_'+_s[z]['secret']+'_n.jpg'
+   console.log(CurrentPhotoUrl);  
+} 
