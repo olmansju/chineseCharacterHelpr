@@ -41,3 +41,22 @@ gem install sass
 
 ## File structure
 This I will type of later, will largely depend on whether we use angular.
+
+#Special Thanks
+Thanks for the different modules
+Pinyin to Chinese Character:
+https://github.com/hermanschaaf/chinese-ime
+
+Text to audio:
+https://responsivevoice.org/
+
+Image search:
+https://www.flickr.com/services/api/flickr.photos.search.html
+
+Special mention for those that provided advice/code snippets.
+https://github.com/tsroten
+https://github.com/texh
+https://www.reddit.com/user/Magnetic_Tree
+http://stackoverflow.com/users/4407926/varun
+
+I apologize to any people I missed
