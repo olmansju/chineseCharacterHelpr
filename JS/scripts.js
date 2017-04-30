@@ -40,59 +40,10 @@ function myResponsiveVoice(character) {
 }
 
 encodedCurrentChineseCharacter = encodeURIComponent('sampletext');
-flickrApiUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=sampletext&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
+requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=sampletext&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1'
 
-//breakdown of the api
-//for size options https://www.flickr.com/services/api/misc.urls.html Currently set to n which is 320px
-CurrentPhotoId = null;
-CurrentPhotoOwner = null;
-CurrentPhotoSecret = null;
-CurrentPhotoServer = null;
-CurrentPhotoFarm = null;
-CurrentPhotoTitle = null;
-CurrentPhotoUrl = 'https://farm'+CurrentPhotoFarm+'.staticflickr.com/'+CurrentPhotoServer+'/'+CurrentPhotoId+'_'+CurrentPhotoSecret+'_n.jpg'
-
-// $.getJSON( flickrApiUrl, function( data ) {
-//   var items = [];
-//   $.each( data, function( key, val ) {
-//     items.push( "<li id='" + key + "'>" + val + "</li>" );
-//   });
- 
-//   $( "<ul/>", {
-//     "class": "my-new-list",
-//     html: items.join( "" )
-//   }).appendTo( "body" );
-// });
-
-// $.get( flickrApiUrl, function( data ) {
-//   $( ".result" ).html( data );
-//   alert( "Load was performed." );
-// });
-
-$("button").on("click", handleButtonClick);
-
-function jsonFlickrFeed(json) {
-  console.log(json);
-  
-  $.each(json.items, function(i, item) {
-    $("<img />").attr("src", item.media.m).appendTo("#images");
-  });
-};
-
-function handleButtonClick() {
-  $("button").remove();
-  
-  $.ajax({
-    url: 'https://api.flickr.com/services/feeds/photos_public.gne',
-    dataType: 'jsonp',
-    data: { "tags": "kitten", "format": "json" }
-  });
-}
-
-var n = JSON.parse(flickrApiUrl)  //x is the json returned from the url.
-var _s = n.photos.photo;
-for(var z = 0 ; z < n.photos.photo.length ; z++)
-{
-   var CurrentPhotoUrl = 'https://farm'+_s[z]['farm']+'.staticflickr.com/'+_s[z]['server']+'/'+_s[z]['id']+'_'+_s[z]['secret']+'_n.jpg'
-   console.log(CurrentPhotoUrl);  
-} 
+$.ajax(requestURL).done(function (data) {
+    data.photos.photo.forEach(function (currentPhoto) {
+        console.log('https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg')
+    })
+})
