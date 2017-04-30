@@ -40,4 +40,31 @@ function myResponsiveVoice(character) {
 }
 
 encodedCurrentChineseCharacter = encodeURIComponent('sampletext');
-flickrApiUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=d592362beec3f98703d88ff5d1d35647&text='+encodedCurrentChineseCharacter+'&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
+flickrApiUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=sampletext&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
+
+//breakdown of the api
+//for size options https://www.flickr.com/services/api/misc.urls.html Currently set to n which is 320px
+CurrentPhotoId = null;
+CurrentPhotoOwner = null;
+CurrentPhotoSecret = null;
+CurrentPhotoServer = null;
+CurrentPhotoFarm = null;
+CurrentPhotoTitle = null;
+CurrentPhotoUrl = 'https://farm'+CurrentPhotoFarm+'.staticflickr.com/'+CurrentPhotoServer+'/'+CurrentPhotoId+'_'+CurrentPhotoSecret+'_n.jpg'
+
+$.getJSON( flickrApiUrl, function( data ) {
+  var items = [];
+  $.each( data, function( key, val ) {
+    items.push( "<li id='" + key + "'>" + val + "</li>" );
+  });
+ 
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "body" );
+});
+
+$.get( flickrApiUrl, function( data ) {
+  $( ".result" ).html( data );
+  alert( "Load was performed." );
+});
