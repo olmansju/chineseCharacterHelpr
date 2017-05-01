@@ -39,11 +39,16 @@ function myResponsiveVoice(character) {
     return responsiveVoice.speak(character, 'Chinese Female');
 }
 
-encodedCurrentChineseCharacter = encodeURIComponent('sampletext');
-requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=sampletext&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1'
 
+
+photoSet=0;
+
+encodedCurrentChineseCharacter = encodeURIComponent('猫');
+requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text='+encodedCurrentChineseCharacter+'&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1'
 $.ajax(requestURL).done(function (data) {
     data.photos.photo.forEach(function (currentPhoto) {
-        console.log('https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg')
+        currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
+        console.log('currentPhotoURL');
+        $(".photo-gallery").append('<div class="photo-from-flickr"><img src="'+currentPhotoURL+'" alt="'+currentPhoto.title+'"/></div>'); 
     })
 })
