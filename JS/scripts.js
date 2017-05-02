@@ -29,7 +29,7 @@ $(document).ready(function () {
 $(".chinese-input").keyup(function () {
     currentPinyin = $("#chinese-ime .typing").text();
     console.log(currentPinyin);
-    currentChineseCharacterChoices = "$.wordDatabase.words."+currentPinyin+".choices";
+    currentChineseCharacterChoices = $.wordDatabase.words.currentPinyin.choices;
 
 });
 
