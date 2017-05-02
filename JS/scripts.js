@@ -15,7 +15,7 @@ ga('create', 'UA-93502866-1', 'auto');
 ga('send', 'pageview');
 
 $(document).ready(function () {
-    $("textarea.chinese").chineseInput({
+    $("input.chinese-input").chineseInput({
         debug: false, // print debug messages
         input: {
             initial: 'simplified', // or 'traditional'
@@ -26,13 +26,11 @@ $(document).ready(function () {
     });
 });
 
-$("input").keyup(function () {
-    var obj = $("#chinese-ime li");
-    var arr = $.makeArray(obj);
+$(".chinese-input").keyup(function () {
+    currentChineseText = $("#chinese-ime .typing").text();
+    console.log(currentChineseText);
+    currentChineseCharacterOptions = $.wordDatabase.words.currentChineseText.options;
 
-    // var arr_list_items = $('#chinese-ime .options ul li').remove().get();
-    // console.log(arr_list_items);
-    alert(arr);
 });
 
 function myResponsiveVoice(character) {

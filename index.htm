@@ -11,7 +11,13 @@
 <body>
 
     <div class="container">
-        <textarea class="chinese"></textarea>
+        <div id="input-container">
+            <input type="text" class="chinese-input" name="chineseInput">
+        </div>
+        <div id="output-container">
+            <input type="button" value="play from function" onclick="myResponsiveVoice('猫')">
+        </div>
+
     </div>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
@@ -21,7 +27,6 @@
     <input type="button" value="Chinese Female" onclick="responsiveVoice.speak('猫', 'Chinese Female')">
     <input type="button" value="Chinese (Hong Kong) Female" onclick="responsiveVoice.speak('猫', 'Chinese (Hong Kong) Female')">
     <input type="button" value="Chinese Taiwan Female" onclick="responsiveVoice.speak('猫', 'Chinese Taiwan Female')">
-    <input type="button" value="play from function" onclick="myResponsiveVoice('猫')">
     <p>The app will require dozens of hours of styling and functionality but all the pieces are there except the images... I need to invest a few hours into looking into APIs. I sent out some feelers but haven't gotten much from people.</p>
     <div id="photo-gallery"></div>
     <!-- Load this script if you want traditional character support -->
