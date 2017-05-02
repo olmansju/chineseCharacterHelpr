@@ -27,9 +27,9 @@ $(document).ready(function () {
 });
 
 $(".chinese-input").keyup(function () {
-    currentChineseText = $("#chinese-ime .typing").text();
-    console.log(currentChineseText);
-    currentChineseCharacterOptions = $.wordDatabase.words.currentChineseText.options;
+    currentPinyin = $("#chinese-ime .typing").text();
+    console.log(currentPinyin);
+    currentChineseCharacterChoices = "$.wordDatabase.words."+currentPinyin+".choices";
 
 });
 
