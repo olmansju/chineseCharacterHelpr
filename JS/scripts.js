@@ -26,11 +26,23 @@ $(document).ready(function () {
     });
 });
 
+// wanted to detect if this div is changed but .change doesn't seem to work, apparently it only works on forms.
+// $(".typing").change(function () {
+//     alert("something was typed");
+// });
+
 $(".chinese-input").keyup(function () {
     currentPinyin = $("#chinese-ime .typing").text();
     console.log(currentPinyin);
     currentChineseCharacterChoices = $.wordDatabase.words[currentPinyin].choices;
+        $("#output-container").empty();
+        CharacterLoopIteration=0;
+    currentChineseCharacterChoices.forEach(function (currentCharacter){
+        $("#output-container").append(currentCharacter); 
+        CharacterLoopIteration++;
 
+        
+    });
 });
 
 function myResponsiveVoice(character) {
