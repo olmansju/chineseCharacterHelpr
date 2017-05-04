@@ -38,8 +38,8 @@ $(".chinese-input").keyup(function () {
     $("#output-container").empty();
     CharacterLoopIteration = 1;
     currentChineseCharacterChoices.forEach(function (currentCharacter) {
-        $("#output-container").append('<div class="chinese-choice" style="width:300px; float:left; border: 1px thin black" id="choice-' + CharacterLoopIteration + '><div class="character-text">' + currentCharacter + '</div><div class="character-speech"><input type="button" value="Chinese Female" onclick="responsiveVoice.speak(\'' + currentCharacter + '\', \'Chinese Female\')"></div><div class="character-images"></div></div>');
-
+        $("#output-container").append('<div class="chinese-choice" style="width:300px; float:left; border: 1px solid black" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="character-speech"><input type="button" value="Play Sound" onclick="responsiveVoice.speak(\'' + currentCharacter + '\', \'Chinese Female\')"></div> <div class="character-images"></div> </div>');
+        $(".character-images").empty();
         //image retrieval
         encodedCurrentChineseCharacter = encodeURIComponent(currentCharacter);
         requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedCurrentChineseCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
@@ -47,7 +47,7 @@ $(".chinese-input").keyup(function () {
             data.photos.photo.forEach(function (currentPhoto) {
                 currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_m.jpg';
                 console.log('currentPhotoURL');
-                $("#choice-" + CharacterLoopIteration + " .character-images").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
+                $("#choice-" + currentCharacter + " .character-images").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
             })
         })
 
@@ -58,17 +58,3 @@ $(".chinese-input").keyup(function () {
 function myResponsiveVoice(character) {
     return responsiveVoice.speak(character, 'Chinese Female');
 }
-
-
-
-photoSet = 0;
-
-encodedCurrentChineseCharacter = encodeURIComponent('猫');
-requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedCurrentChineseCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1'
-$.ajax(requestURL).done(function (data) {
-    data.photos.photo.forEach(function (currentPhoto) {
-        currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_m.jpg';
-        console.log('currentPhotoURL');
-        $("#photo-gallery").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
-    })
-})
