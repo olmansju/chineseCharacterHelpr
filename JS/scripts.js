@@ -31,14 +31,14 @@ $(document).ready(function () {
 //     alert("something was typed");
 // });
 
-$(".chinese-input").keyup(function () {
+function helperChinese() {
     currentPinyin = $("#chinese-ime .typing").text();
     console.log(currentPinyin);
     currentChineseCharacterChoices = $.wordDatabase.words[currentPinyin].choices;
     $("#output-container").empty();
     CharacterLoopIteration = 1;
     currentChineseCharacterChoices.forEach(function (currentCharacter) {
-        $("#output-container").append('<div class="chinese-choice" style="width:300px; float:left; border: 1px solid black" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="character-speech"><input type="button" value="Play Sound" onclick="responsiveVoice.speak(\'' + currentCharacter + '\', \'Chinese Female\')"></div> <div class="character-images"></div> </div>');
+        $("#output-container").append('<div class="chinese-choice" style="width:240px; height:1200px; float:left; border: 1px solid black" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="character-speech"><input type="button" value="Play Sound" onclick="responsiveVoice.speak(\'' + currentCharacter + '\', \'Chinese Female\')"></div> <div class="character-images"></div> </div>');
         $(".character-images").empty();
         //image retrieval
         encodedCurrentChineseCharacter = encodeURIComponent(currentCharacter);
@@ -53,7 +53,7 @@ $(".chinese-input").keyup(function () {
 
         CharacterLoopIteration++;
     });
-});
+};
 
 function myResponsiveVoice(character) {
     return responsiveVoice.speak(character, 'Chinese Female');
