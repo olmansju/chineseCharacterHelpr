@@ -51,12 +51,13 @@ function helperChinese() {
                 $("#choice-" + currentCharacter + " .character-images").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
             })
         })
-        $('.character-text').click(function () {
-            alert($(this).text());
-        });
 
         CharacterLoopIteration++;
     });
+    $('.character-text').click(function () {
+        alert($(this).text());
+    });
+
 };
 
 // function myResponsiveVoice(character) {
