@@ -36,4 +36,23 @@ textarea {
     border: 5px solid #aaa;
     padding: 10px; }
 
+.chinese-checkbox {
+  display: none; }
+
+.chinese-choice {
+  width: 240px;
+  height: 1200px;
+  float: left;
+  border: 1px solid black; }
+
+#ChineseHelprHint {
+  margin-left: 200px; }
+
+#photo-gallery .photo-from-flickr {
+  padding: 2%;
+  max-width: 250px; }
+  #photo-gallery .photo-from-flickr img {
+    width: 100%;
+    height: auto; }
+
 /*# sourceMappingURL=styles.css.map */
