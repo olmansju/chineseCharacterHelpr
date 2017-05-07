@@ -46,7 +46,7 @@ textarea {
 }
 
 .chinese-checkbox{
-  display:none;
+  //display:none;
 }
 
 .chinese-choice{
@@ -55,7 +55,13 @@ textarea {
   float:left;
   border: 1px solid black
 }
-
+.chinese-checkbox{
+  margin-left:150px;
+}
 #ChineseHelprHint{
   margin-left:200px;
+}
+
+#input-container{
+  margin-bottom: 100px;
 }

@@ -36,17 +36,20 @@ textarea {
     border: 5px solid #aaa;
     padding: 10px; }
 
-.chinese-checkbox {
-  display: none; }
-
 .chinese-choice {
   width: 240px;
   height: 1200px;
   float: left;
   border: 1px solid black; }
 
+.chinese-checkbox {
+  margin-left: 150px; }
+
 #ChineseHelprHint {
   margin-left: 200px; }
+
+#input-container {
+  margin-bottom: 100px; }
 
 #photo-gallery .photo-from-flickr {
   padding: 2%;

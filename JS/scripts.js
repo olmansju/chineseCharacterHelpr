@@ -55,7 +55,14 @@ function helperChinese() {
         CharacterLoopIteration++;
     });
     $('.character-text').click(function () {
-        alert($(this).text());
+        ChosenChineseCharacter= $(this).text();
+        $('input.chinese-input').val($('input.chinese-input').val() + ChosenChineseCharacter);
+        // $('.chinese-checkbox input').attr('checked', false); 
+        // $('.chinese-checkbox input').attr('checked', true);
+        //$('#chinese-ime .typing').empty();
+        TextLength = $('#chinese-ime .typing').text().length;
+        
+        $("#output-container").empty();
     });
 
 };
@@ -65,5 +72,3 @@ function helperChinese() {
 // }
 
 //to reset the value
-//$('.chinese-checkbox').prop('checked', false);
-//$('.chinese-checkbox').prop('checked', true);
