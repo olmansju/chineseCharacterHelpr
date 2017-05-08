@@ -56,7 +56,7 @@ function helperChinese() {
     });
     $('.character-text').click(function () {
         ChosenChineseCharacter= $(this).text();
-        $('input.chinese-input').val($('input.chinese-input').val() + ChosenChineseCharacter);
+        //$('input.chinese-input').val($('input.chinese-input').val() + ChosenChineseCharacter);
         // $('.chinese-checkbox input').attr('checked', false); 
         // $('.chinese-checkbox input').attr('checked', true);
         //$('#chinese-ime .typing').empty();

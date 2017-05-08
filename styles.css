@@ -43,7 +43,7 @@ textarea {
   border: 1px solid black; }
 
 .chinese-checkbox {
-  margin-left: 150px; }
+  display: none; }
 
 #ChineseHelprHint {
   margin-left: 200px; }
