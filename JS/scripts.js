@@ -31,26 +31,24 @@ $(".chinese-input").keyup(function () {
             //When an item is clicked
             $("#character-list li").click(function () {
                 selectedCharacter = $(this).text();
+                //$(this).css( "background-color","yellow" );
                 //Generating Sound Clip
-                console.log(selectedCharacter);
                 // $(".play-sound").removeClass("play-sound");
                 // $(this).addClass("play-sound");
-                $(this).click(function () {
-                    console.log(selectedCharacter);
-                    responsiveVoice.speak(selectedCharacter, 'Chinese Female');
-                });
+                console.log(selectedCharacter);
+                responsiveVoice.speak(selectedCharacter, 'Chinese Female');
 
                 //image retrieval
-                // $(".character-images").empty();
-                // encodedCurrentChineseCharacter = encodeURIComponent(currentCharacter);
-                // requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedCurrentChineseCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
-                // $.ajax(requestURL).done(function (data) {
-                //     data.photos.photo.forEach(function (currentPhoto) {
-                //         currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
-                //         console.log('currentPhotoURL');
-                //         $("#choice-" + currentCharacter + " .character-images").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
-                //     })
-                // })
+                $("#image-output").empty();
+                encodedSelectedCharacter = encodeURIComponent(selectedCharacter);
+                requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedSelectedCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=10&page=1&format=json&nojsoncallback=1';
+                $.ajax(requestURL).done(function (data) {
+                    data.photos.photo.forEach(function (currentPhoto) {
+                        currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
+                        console.log('currentPhotoURL');
+                        $("#image-output").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
+                    })
+                })
             });
         })
     }
