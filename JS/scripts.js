@@ -13,23 +13,27 @@
 
 ga('create', 'UA-93502866-1', 'auto');
 ga('send', 'pageview');
-
-$(document).ready(function () {
-    $("input.chinese-input").chineseInput({
-        debug: false, // print debug messages
-        input: {
-            initial: 'simplified', // or 'traditional'
-            allowChange: false // allow transition between traditional and simplified
-        },
-        allowHide: true, // allow the chinese input to be switched off
-        active: true // whether or not the plugin should be active by default
-    });
-});
+//end analytics code
 
 // wanted to detect if this div is changed but .change doesn't seem to work, apparently it only works on forms.
 // $(".typing").change(function () {
 //     alert("something was typed");
 // });
+$(".chinese-input").keyup(function () {
+    if ($(".chinese-input").val().length > 0) {
+        currentCharacterInput = $(".chinese-input").val();
+        console.log(currentCharacterInput);
+        requestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=10&text=' + currentCharacterInput;
+        $.ajax(requestURL).done(function (data) {
+            console.log(data[1][0][3].annotation); //this retrieves the pinyin, without tones sadly
+            $("#character-list").empty();
+            data[1][0][1].forEach(function (currentCharacter) {
+                $("#character-list").append('<li class="' + currentCharacter + '">' + currentCharacter + '</li>');
+            })
+        })
+    }
+});
+
 
 function helperChinese() {
     currentPinyin = $("#chinese-ime .typing").text();
@@ -55,13 +59,13 @@ function helperChinese() {
         CharacterLoopIteration++;
     });
     $('.character-text').click(function () {
-        ChosenChineseCharacter= $(this).text();
+        ChosenChineseCharacter = $(this).text();
         //$('input.chinese-input').val($('input.chinese-input').val() + ChosenChineseCharacter);
         // $('.chinese-checkbox input').attr('checked', false); 
         // $('.chinese-checkbox input').attr('checked', true);
         //$('#chinese-ime .typing').empty();
         TextLength = $('#chinese-ime .typing').text().length;
-        
+
         $("#output-container").empty();
     });
 
