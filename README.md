@@ -40,12 +40,21 @@ Afterwards run this command in your terminal/command prompt.
 gem install sass
 
 ## File structure
-This I will type of later, will largely depend on whether we use angular.
+### index.html
+The site is all housed in a single index.html file. As you will notice it is primarily a group of containers, buttons, and input boxes. The content is injected in through the JavaScript.
+
+### js/scripts.js file.
+The JavaScript starts with the Google Analytics code. When a letter is typed the input box an HTTP Request is sent to the Google Input Tools, which sends a response with the character options. With every new letter the current list is removed and a new request is sent.
+Inside that loop is the rendering of the button that calls the responsiveVoice speech API as well as displaying the photos from the flickr photo service. The CSS that will display the photo service has a 5 second delay.
+
+### styles.css
+The CSS was built with SASS and is taking advantage of flexbox for its display. As CSS Grid becomes accepted in more browsers this may offer more flexibility with the layout and movement of the boxes.
+
 
 #Special Thanks
 Thanks for the different modules
 Pinyin to Chinese Character:
-https://github.com/hermanschaaf/chinese-ime
+https://www.google.com/intl/en/inputtools/services/features/transliteration.html
 
 Text to audio:
 https://responsivevoice.org/
@@ -54,9 +63,11 @@ Image search:
 https://www.flickr.com/services/api/flickr.photos.search.html
 
 Special mention for those that provided advice/code snippets.
+https://github.com/hermanschaaf/
 https://github.com/tsroten
 https://github.com/texh
 https://www.reddit.com/user/Magnetic_Tree
 http://stackoverflow.com/users/4407926/varun
+https://chinese.stackexchange.com/users/17061/treesong
 
-I apologize to any people I missed
+We apologize to any people we missed

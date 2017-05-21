@@ -4,28 +4,31 @@
     <title>Chinese Character Helpr</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
 <body>
-
-    <div class="container">
-        <div id="input-container">
-            <input type="text" class="chinese-input" name="chineseInput">
-            <div id="text-output"></div>
-            <ul id="character-list">
-            </ul>
-        </div>
-        <div id="output-container">
-            <div id="image-output">
+    <div id="container">
+        <div id="controls-container">
+            <div class="chinese-input-container">
+            <input type="text" class="chinese-input" name="chineseInput" />
             </div>
+            <div id="options-container">
+                <div id="play-sound-container"></div>
+                <div id="choose-character-container"></div>
+            </div>
+            <div id="character-compilation"></div>
+        </div>
+        <div id="character-container">
+            <div id="character-list"></div>
+        </div>
+        <div id="image-output">
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
-
 </body>
 
 </html>

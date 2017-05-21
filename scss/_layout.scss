@@ -1,0 +1,20 @@
+*{
+	box-sizing: border-box;
+}
+#container{
+    margin: auto;
+    max-width: 1500px;
+}
+
+@media screen and (min-width: $desktop-viewport) {
+
+    #container{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: $mobile-viewport) {
+	#container {
+        width: 98%;
+	}
+}

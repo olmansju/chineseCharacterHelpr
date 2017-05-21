@@ -1,0 +1,17 @@
+#image-output {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .photo-from-flickr {
+        padding: .5%; //5px at max res, I wanted the padding to decrease as the width decreases
+        max-width: 20%; //images are set to 200px
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+//at less than 768px have .photo-from-flickr width be 50 percent

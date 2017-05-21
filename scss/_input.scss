@@ -1,0 +1,44 @@
+#controls-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+}
+#options-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;    
+}
+
+@media screen and (max-width: $mobile-viewport) {
+	#controls-container {
+        flex-direction: column-reverse;
+	}
+}
+
+// #character-compilation {
+//     margin: 1rem auto;
+//     width: 50%;
+//     height: 2rem;
+//     font: 1.5rem;
+//     text-align: auto;
+//     border: thin black solid;
+// }
+
+// #input-container {
+//             margin: auto;
+//             text-align: center;
+
+//     .chinese-input {
+//         width: 25%;
+//         min-width: 400px;
+//         border: thin red inset;
+//         padding: 5px 5px;
+//         border-radius: 15px;
+//         font-size: 2rem;
+//     }
+// }

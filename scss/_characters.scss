@@ -1,0 +1,32 @@
+#character-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    #options-container {
+        display: none;
+
+    }
+    #character-list {
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        .individual-character {
+            text-align: center;
+            padding: .5%; //5px at max res, I wanted the padding to decrease as the width decreases
+            margin: .5%; //5px at max res, I wanted the padding to decrease as the width decreases
+            width:20%;
+            max-width: 100px;
+            font-size: 5vw;
+            border: thin black inset;
+        }
+        .highlighted-character{
+            background: yellow;
+            color: red;
+        }
+    }
+}

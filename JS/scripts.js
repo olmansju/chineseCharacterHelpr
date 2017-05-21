@@ -25,19 +25,30 @@ $(".chinese-input").keyup(function () {
             $("#character-list").empty();
             data[1][0][1].forEach(function (currentCharacter) {
                 //Generating Character List
-                $("#character-list").append('<li class="' + currentCharacter + '">' + currentCharacter + '</li>');
+                $("#character-list").append('<div class="individual-character ' + currentCharacter + '">' + currentCharacter + '</div>');
 
             })
             //When an item is clicked
-            $("#character-list li").click(function () {
+            $(".individual-character").click(function () {
                 selectedCharacter = $(this).text();
+                $(".highlighted-character").removeClass("highlighted-character");
+                $("."+selectedCharacter).addClass("highlighted-character");
                 //$(this).css( "background-color","yellow" );
                 //Generating Sound Clip
                 // $(".play-sound").removeClass("play-sound");
                 // $(this).addClass("play-sound");
                 //have this part generate a new div to the LEFT of this that has the options to chose this one or play the sound
                 console.log(selectedCharacter);
-                responsiveVoice.speak(selectedCharacter, 'Chinese Female');
+                $("#play-sound-container").empty();
+                $("#play-sound-container").append('<input type="button" value="Play Sound" onclick="responsiveVoice.speak(\'' + selectedCharacter + '\', \'Chinese Female\')">');
+                $("#choose-character-container").empty();
+                $("#choose-character-container").append('<input type="button" value="append to text" onclick="$(\'#character-compilation\').append(selectedCharacter);">');
+
+//                 $("#play-sound-container").click(function() {
+//   responsiveVoice.speak(selectedCharacter, 'Chinese Female');
+// });
+                
+                //window.setTimeout(displayImageOutput, 100);
 
                 //image retrieval
                 $("#image-output").empty();
