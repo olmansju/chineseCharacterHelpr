@@ -35,6 +35,7 @@ $(".chinese-input").keyup(function () {
                 //Generating Sound Clip
                 // $(".play-sound").removeClass("play-sound");
                 // $(this).addClass("play-sound");
+                //have this part generate a new div to the LEFT of this that has the options to chose this one or play the sound
                 console.log(selectedCharacter);
                 responsiveVoice.speak(selectedCharacter, 'Chinese Female');
 
