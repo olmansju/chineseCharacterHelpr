@@ -17,7 +17,7 @@ ga('send', 'pageview');
 
 $(".chinese-input").keyup(function () {
     if ($(".chinese-input").val().length > 0) {
-        currentCharacterInput = $(".chinese-input").val();
+        currentCharacterInput = $(".chinese-input").val().toLowerCase();
         console.log(currentCharacterInput);
         requestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=10&text=' + currentCharacterInput;
         $.ajax(requestURL).done(function (data) {
