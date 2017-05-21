@@ -15,10 +15,6 @@ ga('create', 'UA-93502866-1', 'auto');
 ga('send', 'pageview');
 //end analytics code
 
-// wanted to detect if this div is changed but .change doesn't seem to work, apparently it only works on forms.
-// $(".typing").change(function () {
-//     alert("something was typed");
-// });
 $(".chinese-input").keyup(function () {
     if ($(".chinese-input").val().length > 0) {
         currentCharacterInput = $(".chinese-input").val();
@@ -28,51 +24,34 @@ $(".chinese-input").keyup(function () {
             console.log(data[1][0][3].annotation); //this retrieves the pinyin, without tones sadly
             $("#character-list").empty();
             data[1][0][1].forEach(function (currentCharacter) {
+                //Generating Character List
                 $("#character-list").append('<li class="' + currentCharacter + '">' + currentCharacter + '</li>');
+
             })
+            //When an item is clicked
+            $("#character-list li").click(function () {
+                selectedCharacter = $(this).text();
+                //Generating Sound Clip
+                console.log(selectedCharacter);
+                // $(".play-sound").removeClass("play-sound");
+                // $(this).addClass("play-sound");
+                $(this).click(function () {
+                    console.log(selectedCharacter);
+                    responsiveVoice.speak(selectedCharacter, 'Chinese Female');
+                });
+
+                //image retrieval
+                // $(".character-images").empty();
+                // encodedCurrentChineseCharacter = encodeURIComponent(currentCharacter);
+                // requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedCurrentChineseCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
+                // $.ajax(requestURL).done(function (data) {
+                //     data.photos.photo.forEach(function (currentPhoto) {
+                //         currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
+                //         console.log('currentPhotoURL');
+                //         $("#choice-" + currentCharacter + " .character-images").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
+                //     })
+                // })
+            });
         })
     }
 });
-
-
-function helperChinese() {
-    currentPinyin = $("#chinese-ime .typing").text();
-    console.log(currentPinyin);
-    currentChineseCharacterChoices = $.wordDatabase.words[currentPinyin].choices;
-    $("#output-container").empty();
-    CharacterLoopIteration = 1;
-    currentChineseCharacterChoices.forEach(function (currentCharacter) {
-        $("#output-container").append('<div class="chinese-choice" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="character-speech"><input type="button" value="Play Sound" onclick="responsiveVoice.speak(\'' + currentCharacter + '\', \'Chinese Female\')"></div> <div class="character-images"></div> </div>');
-
-        $(".character-images").empty();
-        //image retrieval
-        encodedCurrentChineseCharacter = encodeURIComponent(currentCharacter);
-        requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedCurrentChineseCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
-        $.ajax(requestURL).done(function (data) {
-            data.photos.photo.forEach(function (currentPhoto) {
-                currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_m.jpg';
-                console.log('currentPhotoURL');
-                $("#choice-" + currentCharacter + " .character-images").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
-            })
-        })
-
-        CharacterLoopIteration++;
-    });
-    $('.character-text').click(function () {
-        ChosenChineseCharacter = $(this).text();
-        //$('input.chinese-input').val($('input.chinese-input').val() + ChosenChineseCharacter);
-        // $('.chinese-checkbox input').attr('checked', false); 
-        // $('.chinese-checkbox input').attr('checked', true);
-        //$('#chinese-ime .typing').empty();
-        TextLength = $('#chinese-ime .typing').text().length;
-
-        $("#output-container").empty();
-    });
-
-};
-
-// function myResponsiveVoice(character) {
-//     return responsiveVoice.speak(character, 'Chinese Female');
-// }
-
-//to reset the value
