@@ -17,6 +17,9 @@
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-between; }
+  #controls-container > div {
+    width: 100%;
+    padding: .5%; }
 
 #options-container {
   display: flex;
@@ -24,6 +27,15 @@
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-between; }
+
+input {
+  width: 100%;
+  height: 2rem; }
+
+#character-compilation {
+  border: thin black solid;
+  height: 2rem;
+  font-size: 1.5rem; }
 
 @media screen and (max-width: 767px) {
   #controls-container {
