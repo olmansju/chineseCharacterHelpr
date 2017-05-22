@@ -42,8 +42,9 @@ $(".chinese-input").keyup(function () {
                 $("#play-sound-container").empty();
                 $("#play-sound-container").append('<input type="button" value="Listen to ' + selectedCharacter + '" onclick="responsiveVoice.speak(\'' + selectedCharacter + '\', \'Chinese Female\')">');
                 $("#choose-character-container").empty();
-                $("#choose-character-container").append('<input type="button" value="append ' + selectedCharacter + ' to string" onclick="$(\'#character-compilation\').append(selectedCharacter);">');
-
+                $("#choose-character-container").append('<input type="button" value="Append ' + selectedCharacter + ' to string" onclick="$(\'.chinese-output\').val($(\'.chinese-output\').val()+selectedCharacter);">');
+// $('#input-field-id').val($('#input-field-id').val() + 'more text');
+// $('.chinese-output').val($('.chinese-output').val()+selectedCharacter);
                 //                 $("#play-sound-container").click(function() {
                 //   responsiveVoice.speak(selectedCharacter, 'Chinese Female');
                 // });
