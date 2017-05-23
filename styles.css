@@ -20,6 +20,9 @@
   #controls-container > div {
     width: 100%;
     padding: .5%; }
+  #controls-container input[type="button"] {
+    font-size: 4rem;
+    height: 2rem; }
 
 #options-container {
   display: flex;
@@ -54,9 +57,8 @@ input {
       text-align: center;
       padding: .5%;
       margin: .5%;
-      width: 20%;
-      max-width: 100px;
-      font-size: 5vw;
+      min-width: 7.5%;
+      font-size: 4vw;
       border: thin black inset; }
     #character-container #character-list .highlighted-character {
       background: yellow;
@@ -74,5 +76,7 @@ input {
     #image-output .photo-from-flickr img {
       width: 100%;
       height: auto; }
+  #image-output .hidden-asset {
+    display: none; }
 
 /*# sourceMappingURL=styles.css.map */

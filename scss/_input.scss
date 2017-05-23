@@ -8,6 +8,10 @@
         width: 100%;
         padding: .5%;
     }
+    input[type="button"]{
+        font-size: 4rem;
+        height:2rem;
+    }
 }
 
 #options-container{
@@ -28,26 +32,3 @@ input{
         flex-direction: column-reverse;
 	}
 }
-
-// #character-compilation {
-//     margin: 1rem auto;
-//     width: 50%;
-//     height: 2rem;
-//     font: 1.5rem;
-//     text-align: auto;
-//     border: thin black solid;
-// }
-
-// #input-container {
-//             margin: auto;
-//             text-align: center;
-
-//     .chinese-input {
-//         width: 25%;
-//         min-width: 400px;
-//         border: thin red inset;
-//         padding: 5px 5px;
-//         border-radius: 15px;
-//         font-size: 2rem;
-//     }
-// }
