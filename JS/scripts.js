@@ -33,17 +33,20 @@ $(".chinese-input").keyup(function () {
                 selectedCharacter = $(this).text();
                 $(".highlighted-character").removeClass("highlighted-character");
                 $("." + selectedCharacter).addClass("highlighted-character");
-                //$(this).css( "background-color","yellow" );
-                //Generating Sound Clip
-                // $(".play-sound").removeClass("play-sound");
-                // $(this).addClass("play-sound");
-                //have this part generate a new div to the LEFT of this that has the options to chose this one or play the sound
                 console.log(selectedCharacter);
                 $("#play-sound-container").empty();
-                $("#play-sound-container").append('<input type="button" value="Listen to ' + selectedCharacter + '" onclick="responsiveVoice.speak(\'' + selectedCharacter + '\', \'Chinese Female\')">');
+                $("#play-sound-container").append("<button onclick=\"responsiveVoice.speak('" + selectedCharacter + "','Chinese Female')\">Listen to " + selectedCharacter + "</button>");
                 $("#choose-character-container").empty();
-                $("#choose-character-container").append('<input type="button" value="Append ' + selectedCharacter + ' to string" onclick="$(\'.chinese-output\').val($(\'.chinese-output\').val()+selectedCharacter);">');
+                $("#choose-character-container").append("<button>Append " + selectedCharacter + " to box</button>");
+                $("#choose-character-container button").click(function () {
 
+                    $(".chinese-output").val($(".chinese-output").val() + selectedCharacter);
+                    $("#image-output").empty();
+                    $("#play-sound-container").empty();
+                    $("#character-list").empty();
+                    $(".chinese-input").val("");
+                    $("#choose-character-container").empty();
+                })
                 //image retrieval
                 $("#image-output").empty();
                 // $(".photo-from-flickr").hide()
@@ -53,7 +56,7 @@ $(".chinese-input").keyup(function () {
                     data.photos.photo.forEach(function (currentPhoto) {
                         currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
                         console.log('currentPhotoURL');
-                        $("#image-output").append('<div class="photo-from-flickr hidden-asset"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></div>');
+                        $("#image-output").append('<div class="photo-from-flickr hidden-asset"><a href="' + currentPhotoURL + '" target="_blank"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
                     })
                 })
                 setTimeout(removeHiddenAsset, 3000);
