@@ -7,7 +7,7 @@
 
 @media screen and (min-width: 768px) {
   #container {
-    width: 85%; } }
+    width: 90%; } }
 @media screen and (max-width: 767px) {
   #container {
     width: 98%; } }
@@ -20,9 +20,6 @@
   #controls-container > div {
     width: 100%;
     padding: .5%; }
-  #controls-container input[type="button"] {
-    font-size: 4rem;
-    height: 2rem; }
 
 #options-container {
   display: flex;
@@ -51,19 +48,21 @@ input {
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around; }
+    flex-wrap: nowrap;
+    justify-content: space-between; }
     #character-container #character-list .individual-character {
       text-align: center;
-      padding: .5%;
-      margin: .5%;
-      min-width: 7.5%;
       font-size: 4vw;
       border: thin black inset; }
     #character-container #character-list .highlighted-character {
       background: yellow;
       color: red; }
 
+@media screen and (max-width: 767px) {
+  #character-list {
+    overflow-x: scroll; }
+    #character-list .individual-character {
+      width: 200px; } }
 #image-output {
   display: flex;
   flex-direction: row;
