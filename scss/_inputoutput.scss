@@ -1,23 +1,26 @@
-#controls-container{
+#controls-container {
     text-align: center;
-    input{
-        margin:auto;
-        text-align:center;
-        width:50%;
+    input {
+        margin: auto;
+        text-align: center;
+        width: 50%;
         border-radius: 50px;
         border: medium solid $red;
         color: $red;
         font-size: 1.2rem;
         font-weight: bold;
-        padding:1%;
-        margin:1% auto;
+        padding: 1%;
+        margin: 1% auto;
+    }
+     :disabled {
+        border: medium solid $light-gray;
     }
 }
 
 @media screen and (max-width: $mobile-viewport) {
-    #controls-container{
-        input{
-            width:90%;
+    #controls-container {
+        input {
+            width: 90%;
         }
     }
 }

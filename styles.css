@@ -415,6 +415,8 @@ template {
     font-weight: bold;
     padding: 1%;
     margin: 1% auto; }
+  #controls-container :disabled {
+    border: medium solid #CCC; }
 
 @media screen and (max-width: 767px) {
   #controls-container input {
