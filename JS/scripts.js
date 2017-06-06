@@ -15,9 +15,9 @@ ga('create', 'UA-93502866-1', 'auto');
 ga('send', 'pageview');
 //end analytics code
 
-$(".chinese-input").keyup(function () {
-    if ($(".chinese-input").val().length > 0) {
-        currentCharacterInput = $(".chinese-input").val().toLowerCase();
+$("#chinese-input").keyup(function () {
+    if ($("#chinese-input").val().length > 0) {
+        currentCharacterInput = $("#chinese-input").val().toLowerCase();
         console.log(currentCharacterInput);
         requestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=10&text=' + currentCharacterInput;
         $.ajax(requestURL).done(function (data) {
@@ -30,6 +30,7 @@ $(".chinese-input").keyup(function () {
             })
             //When an item is clicked
             $(".individual-character").click(function () {
+                $('#chinese-output').attr('disabled', false);
                 selectedCharacter = $(this).text();
                 $(".highlighted-character").removeClass("highlighted-character");
                 $("." + selectedCharacter).addClass("highlighted-character");
@@ -40,11 +41,11 @@ $(".chinese-input").keyup(function () {
                 $("#choose-character-container").append("<button>Append " + selectedCharacter + " to box</button>");
                 $("#choose-character-container button").click(function () {
 
-                    $(".chinese-output").val($(".chinese-output").val() + selectedCharacter);
+                    $("#chinese-output").val($("#chinese-output").val() + selectedCharacter);
                     $("#image-output").empty();
                     $("#play-sound-container").empty();
                     $("#character-list").empty();
-                    $(".chinese-input").val("");
+                    $("#chinese-input").val("");
                     $("#choose-character-container").empty();
                 })
                 //image retrieval
