@@ -11,10 +11,10 @@
         flex-wrap: nowrap;
         justify-content: flex-start;
         text-align: center;
-        .individual-character {
+        border: thin black inset;
+        .character-text {
             text-align: center;
             font-size: 3vw;
-            border: thin black inset;
             flex-grow: 1;
         }
         .highlighted-character {

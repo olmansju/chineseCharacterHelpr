@@ -433,11 +433,11 @@ template {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    text-align: center; }
-    #output-container .character-result .individual-character {
+    text-align: center;
+    border: thin black inset; }
+    #output-container .character-result .character-text {
       text-align: center;
       font-size: 3vw;
-      border: thin black inset;
       flex-grow: 1; }
     #output-container .character-result .highlighted-character {
       background: yellow;
