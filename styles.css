@@ -434,12 +434,12 @@ template {
     flex-wrap: nowrap;
     justify-content: flex-start;
     text-align: center;
-    border: thin black inset; }
+    border: thin black inset;
+    flex-grow: 1; }
     #output-container .character-result .character-text {
       text-align: center;
-      font-size: 3vw;
-      flex-grow: 1; }
-    #output-container .character-result .highlighted-character {
+      font-size: 3vw; }
+    #output-container .character-result:hover {
       background: yellow;
       color: red;
       flex-grow: 2; }
