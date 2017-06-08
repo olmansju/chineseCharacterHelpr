@@ -1,19 +1,16 @@
-#character-container {
+#output-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    #options-container {
-        display: none;
-    }
-    #character-list {
-        width: 100%;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    .character-result {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
         flex-wrap: nowrap;
-        justify-content: space-between;
+        justify-content: flex-start;
+        text-align: center;
         .individual-character {
             text-align: center;
             font-size: 3vw;
@@ -29,16 +26,13 @@
 }
 
 @media screen and (max-width: $mobile-viewport) {
-    #character-container {
-        display: block;
-        #character-list {
-            overflow-x: scroll;
-            width:2000px;
-            .individual-character {
-                width: 200px;
-                display:inline-block;
-                font-size: 5vw;
-            }
+    #character-list {
+        overflow-x: scroll;
+        width: 2000px;
+        .individual-character {
+            width: 200px;
+            display: inline-block;
+            font-size: 5vw;
         }
     }
 }

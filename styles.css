@@ -402,9 +402,9 @@ template {
 @media screen and (max-width: 767px) {
   #container {
     width: 98%; } }
-#controls-container {
+#input-container {
   text-align: center; }
-  #controls-container input {
+  #input-container input {
     margin: auto;
     text-align: center;
     width: 50%;
@@ -415,60 +415,57 @@ template {
     font-weight: bold;
     padding: 1%;
     margin: 1% auto; }
-  #controls-container :disabled {
+  #input-container :disabled {
     border: medium solid #CCC; }
 
 @media screen and (max-width: 767px) {
-  #controls-container input {
+  #input-container input {
     width: 90%; } }
-#character-container {
+#output-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-start; }
-  #character-container #options-container {
-    display: none; }
-  #character-container #character-list {
-    width: 100%;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  justify-content: space-between; }
+  #output-container .character-result {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: space-between; }
-    #character-container #character-list .individual-character {
+    justify-content: flex-start;
+    text-align: center; }
+    #output-container .character-result .individual-character {
       text-align: center;
       font-size: 3vw;
       border: thin black inset;
       flex-grow: 1; }
-    #character-container #character-list .highlighted-character {
+    #output-container .character-result .highlighted-character {
       background: yellow;
       color: red;
       flex-grow: 2; }
 
 @media screen and (max-width: 767px) {
-  #character-container {
-    display: block; }
-    #character-container #character-list {
-      overflow-x: scroll;
-      width: 2000px; }
-      #character-container #character-list .individual-character {
-        width: 200px;
-        display: inline-block;
-        font-size: 5vw; } }
-#image-output {
+  #character-list {
+    overflow-x: scroll;
+    width: 2000px; }
+    #character-list .individual-character {
+      width: 200px;
+      display: inline-block;
+      font-size: 5vw; } }
+.image-output {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-around; }
-  #image-output .photo-from-flickr {
-    padding: .5%;
-    max-width: 20%; }
-    #image-output .photo-from-flickr img {
+  flex-wrap: nowrap;
+  justify-content: flex-start; }
+  .image-output .photo-from-flickr {
+    padding: .5%; }
+    .image-output .photo-from-flickr img {
       width: 100%;
-      height: auto; }
-  #image-output .hidden-asset {
+      height: auto;
+      padding: 1%;
+      border: 1%; }
+  .image-output .hidden-asset {
     display: none; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,4 +1,4 @@
-#controls-container {
+#input-container {
     text-align: center;
     input {
         margin: auto;
@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-width: $mobile-viewport) {
-    #controls-container {
+    #input-container {
         input {
             width: 90%;
         }
