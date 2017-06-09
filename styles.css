@@ -445,12 +445,13 @@ template {
       flex-grow: 2; }
 
 @media screen and (max-width: 767px) {
-  #character-list {
-    overflow-x: scroll;
-    width: 2000px; }
-    #character-list .individual-character {
-      width: 200px;
-      display: inline-block;
+  #output-wrapper {
+    width: 100%;
+    overflow-x: scroll; }
+
+  #output-container {
+    width: 1000px; }
+    #output-container .character-result .character-text {
       font-size: 5vw; } }
 .image-output {
   display: flex;

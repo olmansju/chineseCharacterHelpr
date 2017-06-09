@@ -12,12 +12,12 @@
         justify-content: flex-start;
         text-align: center;
         border: thin black inset;
-        flex-grow:1;
+        flex-grow: 1;
         .character-text {
             text-align: center;
             font-size: 3vw;
         }
-        &:hover{
+        &:hover {
             background: yellow;
             color: red;
             flex-grow: 2;
@@ -26,13 +26,17 @@
 }
 
 @media screen and (max-width: $mobile-viewport) {
-    #character-list {
+    //I can probably delete the output-wrapper
+    #output-wrapper{
+        width:100%;
         overflow-x: scroll;
-        width: 2000px;
-        .individual-character {
-            width: 200px;
-            display: inline-block;
-            font-size: 5vw;
+    }
+    #output-container {
+        width: 1000px;
+        .character-result {
+            .character-text {
+                font-size: 5vw;
+            }
         }
     }
 }
