@@ -18,7 +18,13 @@ ga('send', 'pageview');
 //have the curser automatically show up in the input box
 $("#chinese-input").focus();
 
-$("#chinese-input").keyup(function () {
+var timer = null;
+$('#chinese-input').keyup(function(){
+       clearTimeout(timer); 
+       timer = setTimeout(doneTyping, 1000)
+});
+
+function doneTyping() {
     if ($("#chinese-input").val().length > 0) {
         //clearing out any existing timers
         var TimeoutAudioDelay
@@ -74,4 +80,4 @@ $("#chinese-input").keyup(function () {
             });
         })
     }
-});
+};
