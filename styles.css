@@ -390,7 +390,7 @@ template {
   display: none; }
 
 body {
-  background-color: #ddddff; }
+  background-color: #fefeff; }
 
 * {
   box-sizing: border-box; }
@@ -419,7 +419,7 @@ body {
     padding: 1%;
     margin: 1% auto; }
   #input-container :disabled {
-    border: medium solid #CCC; }
+    border: medium solid #f5f5f5; }
 
 @media screen and (max-width: 767px) {
   #input-container input {
@@ -430,7 +430,8 @@ body {
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: nowrap;
-  justify-content: space-between; }
+  justify-content: space-between;
+  background-color: white; }
   #output-container .character-result {
     display: flex;
     flex-direction: column;
@@ -439,6 +440,16 @@ body {
     text-align: center;
     border: thin black inset;
     flex-grow: 1; }
+    #output-container .character-result .translation-speech {
+      text-align: center; }
+      #output-container .character-result .translation-speech img {
+        margin: 2%;
+        fill: #666; }
+        #output-container .character-result .translation-speech img path {
+          fill: red; }
+        #output-container .character-result .translation-speech img:hover {
+          fill: #006600;
+          color: #006600; }
     #output-container .character-result .character-text {
       text-align: center;
       font-size: 3vw; }

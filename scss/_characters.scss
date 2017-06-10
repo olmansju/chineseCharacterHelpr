@@ -5,6 +5,7 @@
     align-items: flex-start;
     flex-wrap: nowrap;
     justify-content: space-between;
+    background-color: white;
     .character-result {
         display: flex;
         flex-direction: column;
@@ -13,6 +14,20 @@
         text-align: center;
         border: thin black inset;
         flex-grow: 1;
+        .translation-speech {
+            text-align: center;
+            img {
+                margin: 2%;
+                fill: $dark-gray;
+                path{
+                    fill:red;
+                }
+                 &:hover {
+                    fill: $green;
+                    color: $green;
+                }
+            }
+        }
         .character-text {
             text-align: center;
             font-size: 3vw;

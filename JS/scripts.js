@@ -52,7 +52,7 @@ function doneTyping() {
                 //Generating Character List
                 $("#output-container").append('<div class="character-result" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="translation-speech"></div> <div class="image-output"></div> </div>');
                 
-                //Genr
+                //Generating audio
                 timeoutAudioDelay = setTimeout(audioDelay, 3000);
                 function audioDelay() {
                     $("#choice-" + currentCharacter + " .translation-speech").append('<img src="Speaker_Icon.svg" class="character-speech" alt="play sound" height="35" width="35">');
@@ -62,13 +62,12 @@ function doneTyping() {
                 }
 
                 //Generating english translation
-                timeoutTranslationDelay = setTimeout(translationDelay, 3000);
+                timeoutTranslationDelay = setTimeout(translationDelay, 4000);
                 function translationDelay() {
                     translateRequestURL = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=' + currentCharacter;
                     $.ajax(translateRequestURL).done(function (data) {
                         translatedWord = data[0][0][0];
-                        $("#choice-" + currentCharacter + " .translation-speech").append(translatedWord);
-
+                        $("#choice-" + currentCharacter + " .translation-speech").append('<img src="Book_Icon.svg" class="character-translation" alt="play sound" height="35" width="35">');
                     });
                 }
                 FlickrRequestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + currentCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=10&page=1&format=json&nojsoncallback=1';
