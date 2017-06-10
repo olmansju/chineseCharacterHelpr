@@ -16,16 +16,22 @@
         flex-grow: 1;
         .translation-speech {
             text-align: center;
-            img {
+            svg {
+                width:45px;
+                height:45px;
                 margin: 2%;
-                fill: $dark-gray;
-                path{
-                    fill:red;
-                }
-                 &:hover {
-                    fill: $green;
-                    color: $green;
-                }
+                //this will change the color of the SVGs but it looks worse
+                // color: $dark-gray !important;
+                // stroke: $dark-gray !important;
+                //  &:hover {
+                //     fill: $green;
+                //     color: $green;
+                // }
+                // polygon, path{
+                // fill: $dark-gray !important;
+                // stroke: $dark-gray !important;
+
+                // }
             }
         }
         .character-text {

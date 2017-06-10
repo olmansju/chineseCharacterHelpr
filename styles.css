@@ -442,14 +442,10 @@ body {
     flex-grow: 1; }
     #output-container .character-result .translation-speech {
       text-align: center; }
-      #output-container .character-result .translation-speech img {
-        margin: 2%;
-        fill: #666; }
-        #output-container .character-result .translation-speech img path {
-          fill: red; }
-        #output-container .character-result .translation-speech img:hover {
-          fill: #006600;
-          color: #006600; }
+      #output-container .character-result .translation-speech svg {
+        width: 45px;
+        height: 45px;
+        margin: 2%; }
     #output-container .character-result .character-text {
       text-align: center;
       font-size: 3vw; }
