@@ -43,7 +43,7 @@ function doneTyping() {
         console.log(currentCharacterInput);
         requestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=7&text=' + currentCharacterInput;
         $.ajax(requestURL).done(function (data) {
-            console.log(data[1][0][3].annotation); //this retrieves the pinyin, without tones sadly
+            //console.log(data[1][0][3].annotation); //this retrieves the pinyin, without tones sadly
             $("#character-list").empty();
             data[1][0][1].forEach(function (currentCharacter) {
                 //Generating Character List
@@ -55,18 +55,19 @@ function doneTyping() {
                         responsiveVoice.speak(currentCharacter, 'Chinese Female')
                     });
                 }
-                //image retrieval
-                TimeoutImageDelay = setTimeout(imageDelay, 11000);
-                function imageDelay() {
                     encodedSelectedCharacter = encodeURIComponent(currentCharacter);
                     requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedSelectedCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=10&page=1&format=json&nojsoncallback=1';
                     $.ajax(requestURL).done(function (data) {
                         data.photos.photo.forEach(function (currentPhoto) {
                             currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
                             console.log('currentPhotoURL');
-                            $("#choice-" + currentCharacter + " .image-output").append('<div class="photo-from-flickr"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
+                            $("#choice-" + currentCharacter + " .image-output").append('<div class="photo-from-flickr hidden-asset"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
                         })
                     })
+                //image retrieval
+                TimeoutImageDelay = setTimeout(imageDelay, 11000);
+                function imageDelay() {
+                    $(".photo-from-flickr").removeClass("hidden-asset");
                 }
             })
             //When an item is clicked
