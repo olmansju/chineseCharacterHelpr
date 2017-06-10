@@ -19,9 +19,15 @@ ga('send', 'pageview');
 $("#chinese-input").focus();
 
 var timer = null;
-$('#chinese-input').keyup(function(){
-       clearTimeout(timer); 
-       timer = setTimeout(doneTyping, 1000)
+$('#chinese-input').keyup(function (e) {
+    // ignores arrow keys, list of all keys in case you want to add some more:
+    // https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
+    var code = (e.keyCode || e.which);
+    if (code == 37 || code == 38 || code == 39 || code == 40) {
+        return;
+    }
+    clearTimeout(timer);
+    timer = setTimeout(doneTyping, 2000)
 });
 
 function doneTyping() {
@@ -29,13 +35,13 @@ function doneTyping() {
         //clearing out any existing timers
         var TimeoutAudioDelay
         var TimeoutImageDelay
-        clearTimeout( TimeoutAudioDelay );
-        clearTimeout( TimeoutImageDelay );
+        clearTimeout(TimeoutAudioDelay);
+        clearTimeout(TimeoutImageDelay);
 
         $("#output-container").empty();
         currentCharacterInput = $("#chinese-input").val().toLowerCase();
         console.log(currentCharacterInput);
-        requestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=10&text=' + currentCharacterInput;
+        requestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=7&text=' + currentCharacterInput;
         $.ajax(requestURL).done(function (data) {
             console.log(data[1][0][3].annotation); //this retrieves the pinyin, without tones sadly
             $("#character-list").empty();
@@ -44,13 +50,13 @@ function doneTyping() {
                 $("#output-container").append('<div class="character-result" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="character-speech"></div> <div class="image-output"></div> </div>');
                 TimeoutAudioDelay = setTimeout(audioDelay, 3000);
                 function audioDelay() {
-                    $("#choice-" + currentCharacter + " .character-speech").append('<img src="Speaker_Icon.svg" alt="play sound" height="50" width="50">');
-                    $("#choice-" + currentCharacter + " .character-speech").click(function(){
+                    $("#choice-" + currentCharacter + " .character-speech").append('<img src="Speaker_Icon.svg" alt="play sound" height="40" width="40">');
+                    $("#choice-" + currentCharacter + " .character-speech").click(function () {
                         responsiveVoice.speak(currentCharacter, 'Chinese Female')
                     });
                 }
                 //image retrieval
-                TimeoutImageDelay= setTimeout(imageDelay, 6000);
+                TimeoutImageDelay = setTimeout(imageDelay, 11000);
                 function imageDelay() {
                     encodedSelectedCharacter = encodeURIComponent(currentCharacter);
                     requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedSelectedCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=10&page=1&format=json&nojsoncallback=1';

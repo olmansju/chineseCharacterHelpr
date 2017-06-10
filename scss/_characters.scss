@@ -27,16 +27,14 @@
 
 @media screen and (max-width: $mobile-viewport) {
     //I can probably delete the output-wrapper
-    #output-wrapper{
-        width:100%;
+    #output-wrapper {
+        width: 100%;
         overflow-x: scroll;
     }
     #output-container {
         width: 1000px;
-        .character-result {
-            .character-text {
-                font-size: 5vw;
-            }
+        .character-text {
+            font-size: 7vw;
         }
     }
 }
