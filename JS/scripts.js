@@ -33,39 +33,54 @@ $('#chinese-input').keyup(function (e) {
 function doneTyping() {
     if ($("#chinese-input").val().length > 0) {
         //clearing out any existing timers
-        var TimeoutAudioDelay
-        var TimeoutImageDelay
-        clearTimeout(TimeoutAudioDelay);
-        clearTimeout(TimeoutImageDelay);
+        var timeoutAudioDelay
+        var translationDelay
+        var timeoutImageDelay
+        clearTimeout(timeoutAudioDelay);
+        clearTimeout(translationDelay);
+        clearTimeout(timeoutImageDelay);
 
         $("#output-container").empty();
         currentCharacterInput = $("#chinese-input").val().toLowerCase();
-        console.log(currentCharacterInput);
-        requestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=7&text=' + currentCharacterInput;
-        $.ajax(requestURL).done(function (data) {
+        //console.log(currentCharacterInput);
+        PinyinToChineseRequestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=7&text=' + currentCharacterInput;
+        $.ajax(PinyinToChineseRequestURL).done(function (data) {
             //console.log(data[1][0][3].annotation); //this retrieves the pinyin, without tones sadly
             $("#character-list").empty();
             data[1][0][1].forEach(function (currentCharacter) {
+                //encodedSelectedCharacter = encodeURIComponent(currentCharacter); //apparently the character doesn't need to be encoded, flickr worked regardless
                 //Generating Character List
-                $("#output-container").append('<div class="character-result" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="character-speech"></div> <div class="image-output"></div> </div>');
-                TimeoutAudioDelay = setTimeout(audioDelay, 3000);
+                $("#output-container").append('<div class="character-result" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="translation-speech"></div> <div class="image-output"></div> </div>');
+                
+                //Genr
+                timeoutAudioDelay = setTimeout(audioDelay, 3000);
                 function audioDelay() {
-                    $("#choice-" + currentCharacter + " .character-speech").append('<img src="Speaker_Icon.svg" alt="play sound" height="40" width="40">');
+                    $("#choice-" + currentCharacter + " .translation-speech").append('<img src="Speaker_Icon.svg" class="character-speech" alt="play sound" height="35" width="35">');
                     $("#choice-" + currentCharacter + " .character-speech").click(function () {
                         responsiveVoice.speak(currentCharacter, 'Chinese Female')
                     });
                 }
-                    encodedSelectedCharacter = encodeURIComponent(currentCharacter);
-                    requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + encodedSelectedCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=10&page=1&format=json&nojsoncallback=1';
-                    $.ajax(requestURL).done(function (data) {
-                        data.photos.photo.forEach(function (currentPhoto) {
-                            currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
-                            console.log('currentPhotoURL');
-                            $("#choice-" + currentCharacter + " .image-output").append('<div class="photo-from-flickr hidden-asset"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
-                        })
+
+                //Generating english translation
+                timeoutTranslationDelay = setTimeout(translationDelay, 3000);
+                function translationDelay() {
+                    translateRequestURL = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=' + currentCharacter;
+                    $.ajax(translateRequestURL).done(function (data) {
+                        translatedWord = data[0][0][0];
+                        $("#choice-" + currentCharacter + " .translation-speech").append(translatedWord);
+
+                    });
+                }
+                FlickrRequestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + currentCharacter + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=10&page=1&format=json&nojsoncallback=1';
+                $.ajax(FlickrRequestURL).done(function (data) {
+                    data.photos.photo.forEach(function (currentPhoto) {
+                        currentPhotoURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
+                        $("#choice-" + currentCharacter + " .image-output").append('<div class="photo-from-flickr hidden-asset"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
                     })
+                })
                 //image retrieval
-                TimeoutImageDelay = setTimeout(imageDelay, 11000);
+                timeoutImageDelay = setTimeout(imageDelay, 11000);
+
                 function imageDelay() {
                     $(".photo-from-flickr").removeClass("hidden-asset");
                 }

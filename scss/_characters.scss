@@ -18,8 +18,8 @@
             font-size: 3vw;
         }
         &:hover {
-            background: yellow;
-            color: red;
+            background: $yellow;
+            color: $green;
             flex-grow: 2;
         }
     }

@@ -389,6 +389,9 @@ template {
 [hidden] {
   display: none; }
 
+body {
+  background-color: #ddddff; }
+
 * {
   box-sizing: border-box; }
 
@@ -409,8 +412,8 @@ template {
     text-align: center;
     width: 50%;
     border-radius: 50px;
-    border: medium solid red;
-    color: red;
+    border: medium solid #006600;
+    color: #006600;
     font-size: 1.2rem;
     font-weight: bold;
     padding: 1%;
@@ -440,8 +443,8 @@ template {
       text-align: center;
       font-size: 3vw; }
     #output-container .character-result:hover {
-      background: yellow;
-      color: red;
+      background: #ffffaa;
+      color: #006600;
       flex-grow: 2; }
 
 @media screen and (max-width: 767px) {
@@ -451,8 +454,8 @@ template {
 
   #output-container {
     width: 1000px; }
-    #output-container .character-result .character-text {
-      font-size: 5vw; } }
+    #output-container .character-text {
+      font-size: 7vw; } }
 .image-output {
   display: flex;
   flex-direction: column;
