@@ -15,12 +15,14 @@
         border: thin black inset;
         flex-grow: 1;
         .translation-speech {
-            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: nowrap;
             svg {
-                width:45px;
-                height:45px;
-                margin: 2%;
-                //this will change the color of the SVGs but it looks worse
+                width: 45px;
+                height: 45px;
+                margin: 2%; //this will change the color of the SVGs but it looks worse
                 // color: $dark-gray !important;
                 // stroke: $dark-gray !important;
                 //  &:hover {
@@ -30,18 +32,27 @@
                 // polygon, path{
                 // fill: $dark-gray !important;
                 // stroke: $dark-gray !important;
-
                 // }
+            }
+        }
+        .translated-text {
+            color: $dark-gray;
+            font-size: 1rem;
+            span {
+                font-weight: bold;
+                color: $green;
             }
         }
         .character-text {
             text-align: center;
             font-size: 3vw;
-        }
-        &:hover {
-            background: $yellow;
-            color: $green;
-            flex-grow: 2;
+            &:hover {
+                color: $green;
+            }
+            &:hover {
+                background: $yellow;
+                flex-grow: 2;
+            }
         }
     }
 }
