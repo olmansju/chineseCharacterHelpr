@@ -63,7 +63,7 @@ function doneTyping() {
                 }
 
                 //Generating english translation
-                timeoutTranslationDelay = setTimeout(translationDelay, 4000);
+                timeoutTranslationDelay = setTimeout(translationDelay, 20000);
 
                 function translationDelay() {
                     translateRequestURL = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=' + currentCharacter;
