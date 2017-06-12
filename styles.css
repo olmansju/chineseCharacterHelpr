@@ -475,7 +475,7 @@ body {
   #output-container {
     width: 1000px; }
     #output-container .character-text {
-      font-size: 7vw; } }
+      font-size: 1.5rem; } }
 .image-output {
   display: flex;
   flex-direction: column;
