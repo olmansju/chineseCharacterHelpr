@@ -1,12 +1,12 @@
-#controls-container {
+#input-container {
     text-align: center;
     input {
         margin: auto;
         text-align: center;
         width: 50%;
         border-radius: 50px;
-        border: medium solid $red;
-        color: $red;
+        border: medium solid $green;
+        color: $green;
         font-size: 1.2rem;
         font-weight: bold;
         padding: 1%;
@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-width: $mobile-viewport) {
-    #controls-container {
+    #input-container {
         input {
             width: 90%;
         }

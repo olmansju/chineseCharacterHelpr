@@ -1,44 +1,72 @@
-#character-container {
+#output-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    #options-container {
-        display: none;
-    }
-    #character-list {
-        width: 100%;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: white;
+    .character-result {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
         flex-wrap: nowrap;
-        justify-content: space-between;
-        .individual-character {
+        justify-content: flex-start;
+        text-align: center;
+        border: thin black inset;
+        flex-grow: 1;
+        .translation-speech {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            svg {
+                width: 45px;
+                height: 45px;
+                margin: 2%; //this will change the color of the SVGs but it looks worse
+                // color: $dark-gray !important;
+                // stroke: $dark-gray !important;
+                //  &:hover {
+                //     fill: $green;
+                //     color: $green;
+                // }
+                // polygon, path{
+                // fill: $dark-gray !important;
+                // stroke: $dark-gray !important;
+                // }
+            }
+        }
+        .translated-text {
+            color: $dark-gray;
+            font-size: 1rem;
+            span {
+                font-weight: bold;
+                color: $green;
+            }
+        }
+        .character-text {
             text-align: center;
             font-size: 3vw;
-            border: thin black inset;
-            flex-grow: 1;
-        }
-        .highlighted-character {
-            background: yellow;
-            color: red;
-            flex-grow: 2;
+            &:hover {
+                color: $green;
+            }
+            &:hover {
+                background: $yellow;
+                flex-grow: 2;
+            }
         }
     }
 }
 
 @media screen and (max-width: $mobile-viewport) {
-    #character-container {
-        display: block;
-        #character-list {
-            overflow-x: scroll;
-            width:2000px;
-            .individual-character {
-                width: 200px;
-                display:inline-block;
-                font-size: 5vw;
-            }
+    //I can probably delete the output-wrapper
+    #output-wrapper {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    #output-container {
+        width: 1000px;
+        .character-text {
+            font-size: 1.5rem;
         }
     }
 }
