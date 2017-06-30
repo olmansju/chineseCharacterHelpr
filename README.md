@@ -8,7 +8,7 @@ http://sass-lang.com/install
 ## Justin Olmanson
 ### Title
 contact: jolmanson2@unl.edu
---Justin Bio goes here
+--Justin is the co-designer of the application and co-leads the research that focuses on its efficacy. He is an assistant professor of Instructional Technology at the University of Nebraska Lincoln
 
 ## Xianquan Liu
 ### Title
