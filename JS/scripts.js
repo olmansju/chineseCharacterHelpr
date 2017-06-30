@@ -39,11 +39,6 @@ function doneTyping() {
         clearTimeout(timeoutAudioDelay);
         clearTimeout(translationDelay);
         clearTimeout(timeoutImageDelay);
-
-        var chineseCharacterArray = []
-        var englishWordsArray = []
-        var currentCharacterGlobal =''
-
         $("#output-container").empty();
         currentCharacterInput = $("#chinese-input").val().toLowerCase();
         PinyinToChineseRequestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=7&text=' + currentCharacterInput;
@@ -51,7 +46,6 @@ function doneTyping() {
             $("#character-list").empty();
             data[1][0][1].forEach(function (currentCharacter) {
                 currentCharacterGlobal = currentCharacter;
-                //encodedSelectedCharacter = encodeURIComponent(currentCharacter); //apparently the character doesn't need to be encoded, flickr worked regardless
                 //Generating Character List
                 $("#output-container").append('<div class="character-result" id="choice-' + currentCharacter + '"> <div class="character-text">' + currentCharacter + '</div> <div class="translation-speech"></div> <div class="translated-text hidden-asset"></div> <div class="image-output"></div> </div>');
 
@@ -97,7 +91,6 @@ function doneTyping() {
                         data.photos.photo.forEach(function (currentPhoto) {
                             currentPhotoEnglishURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
                             tempEnglishPhotos.push(currentPhotoEnglishURL.toString());
-                            //$("#choice-" + currentCharacter + " .image-output").append('<div class="photo-from-flickr hidden-asset"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
                         })
                     })
 
@@ -105,9 +98,7 @@ function doneTyping() {
                     $.ajax(FlickrRequestURLEnglish).done(function (data) {
                         data.photos.photo.forEach(function (currentPhoto) {
                             currentPhotoChineseURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
-
                             tempChinesePhotos.push(currentPhotoChineseURL.toString());
-                            //$("#choice-" + currentCharacter + " .image-output").append('<div class="photo-from-flickr hidden-asset"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
                         })
                         interweavingLanguageExecutionDelay = setTimeout(interweavingLanguageExecution, 2000);
                     })
@@ -123,11 +114,6 @@ function doneTyping() {
 
                     }
                 }
-
-
-
-
-
 
                 //image retrieval
                 timeoutImageDelay = setTimeout(imageDelay, 11000);
@@ -147,10 +133,6 @@ function doneTyping() {
                 $("#chinese-input").val("");
                 $("#chinese-input").focus();
                 $("#output-container").empty();
-                // setTimeout(removeHiddenAsset, 3000);
-                // function removeHiddenAsset() {
-                //     $(".photo-from-flickr").removeClass("hidden-asset");
-                // }
             });
         })
     }
