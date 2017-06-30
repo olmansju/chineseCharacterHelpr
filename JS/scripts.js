@@ -94,12 +94,14 @@ function doneTyping() {
                         })
                     })
 
+                    //English image retrieval function
                     FlickrRequestURLEnglish = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a970fbb976a06193676f88ef2722cc8&text=' + translatedWord + '&sort=relevance&privacy_filter=1&safe_search=1&per_page=5&page=1&format=json&nojsoncallback=1';
                     $.ajax(FlickrRequestURLEnglish).done(function (data) {
                         data.photos.photo.forEach(function (currentPhoto) {
                             currentPhotoChineseURL = 'https://farm' + currentPhoto.farm + '.staticflickr.com/' + currentPhoto.server + '/' + currentPhoto.id + '_' + currentPhoto.secret + '_n.jpg';
                             tempChinesePhotos.push(currentPhotoChineseURL.toString());
                         })
+                        //After this is done the two are merged together
                         interweavingLanguageExecutionDelay = setTimeout(interweavingLanguageExecution, 2000);
                     })
 
