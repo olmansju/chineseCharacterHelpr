@@ -109,8 +109,8 @@ function doneTyping() {
                             tempChinesePhotos.push(currentPhotoChineseURL.toString());
                             //$("#choice-" + currentCharacter + " .image-output").append('<div class="photo-from-flickr hidden-asset"><img src="' + currentPhotoURL + '" alt="' + currentPhoto.title + '"/></a></div>');
                         })
+                        interweavingLanguageExecutionDelay = setTimeout(interweavingLanguageExecution, 2000);
                     })
-                    interweavingLanguageExecutionDelay = setTimeout(interweavingLanguageExecution, 1000);
 
                     function interweavingLanguageExecution() {
                         //preparing interwoven array
