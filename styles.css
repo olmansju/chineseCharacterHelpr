@@ -27,7 +27,10 @@ body {
  */
 article,
 aside,
-footer,
+footer {
+  display flex;
+  align center;
+}
 header,
 nav,
 section {

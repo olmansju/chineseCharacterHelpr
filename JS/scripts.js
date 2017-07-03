@@ -26,6 +26,12 @@ $('#chinese-input').keyup(function (e) {
     if (code == 37 || code == 38 || code == 39 || code == 40) {
         return;
     }
+    if (code == 32){
+        clearTimeout(timer);
+        timer = setTimeout(doneTyping, 1);
+        return;
+        //on spacebar keyup skip the waiting period, if i don't include setTimeout and just return doneTyping() there is a flash at 2000ms
+    }
     clearTimeout(timer);
     timer = setTimeout(doneTyping, 2000)
 });
