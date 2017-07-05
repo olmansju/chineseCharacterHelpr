@@ -4,10 +4,12 @@
 #container{
     margin: auto;
     max-width: 1500px;
+    min-height: 98%; //this pushes the height when empty to the right distance so the footer is at the bottom
+    flex: 1 0 auto; //test
+    align-self: auto;
 }
 
 @media screen and (min-width: $desktop-viewport) {
-
     #container{
         width: 90%;
     }

@@ -27,10 +27,7 @@ body {
  */
 article,
 aside,
-footer {
-  display flex;
-  align center;
-}
+footer,
 header,
 nav,
 section {
@@ -403,7 +400,10 @@ body {
 
 #container {
   margin: auto;
-  max-width: 1500px; }
+  max-width: 1500px;
+  min-height: 98%;
+  flex: 1 0 auto;
+  align-self: auto; }
 
 @media screen and (min-width: 768px) {
   #container {
@@ -452,8 +452,8 @@ body {
       justify-content: space-around;
       flex-wrap: nowrap; }
       #output-container .character-result .translation-speech svg {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         margin: 2%; }
     #output-container .character-result .translated-text {
       color: #666;
@@ -492,5 +492,9 @@ body {
       height: auto;
       padding: 1%;
       border: 1%; }
+
+.footer {
+  text-align: center;
+  align-self: flex-end; }
 
 /*# sourceMappingURL=styles.css.map */
