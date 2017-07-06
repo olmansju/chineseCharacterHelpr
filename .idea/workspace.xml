@@ -454,7 +454,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1871" y="-560" width="1865" height="1000" extended-state="0" />
+    <frame x="-1871" y="-560" width="1865" height="1000" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12096333" sideWeight="0.70092225" order="0" side_tool="false" content_ui="combo" />
