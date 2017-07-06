@@ -75,7 +75,7 @@ function doneTyping() {
                     ga('send', {
                         hitType: 'event',
                         eventCategory: 'AudioPlayed',
-                        eventAction: $("#chinese-output").val(),
+                        eventAction: currentCharacterInput,
                         eventLabel: currentCharacter,
                         eventValue: timer
                     });
@@ -99,7 +99,7 @@ function doneTyping() {
                         ga('send', {
                             hitType: 'event',
                             eventCategory: 'TranslationViewed',
-                            eventAction: $("#chinese-output").val(),
+                            eventAction: currentCharacterInput,
                             eventLabel: currentCharacter,
                             eventValue: timer
                         });
