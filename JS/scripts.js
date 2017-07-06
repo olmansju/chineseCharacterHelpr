@@ -1,5 +1,5 @@
 //google analytics code
-//add event triggers in the functions below see google site for how to...
+//add event triggers in the functions below see google site for how to
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function () {
@@ -49,6 +49,13 @@ function doneTyping() {
         clearTimeout(timeoutImageDelay);
         $("#output-container").empty();
         currentCharacterInput = $("#chinese-input").val().toLowerCase(); //if backend then add security here
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'PinyinSend',
+            eventAction: $("#chinese-output").val(),
+            eventLabel: currentCharacterInput,
+            eventValue: timer
+        });
         PinyinToChineseRequestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=7&text=' + currentCharacterInput;
         //this runs on jquery all the .append and $.ajax is that
         $.ajax(PinyinToChineseRequestURL).done(function (data) {
@@ -64,7 +71,14 @@ function doneTyping() {
                 $("#choice-" + currentCharacter + " .translation-speech").append('<div class="character-speech hidden-asset"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1" width="400pt" height="400pt" viewBox="0 0 75 75"><metadata id="metadata1"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><g id="g1"><polygon id="polygon1" points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:none;stroke-width:5;stroke-linejoin:round;fill:#494848;" /><path id="path1" d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577" style="fill:none;stroke:#494848;stroke-width:5;stroke-linecap:round"/> <path id="path2" d="M 55.082,20.537 C 58.777,25.523 60.966,31.694 60.966,38.377 C 60.966,44.998 58.815,51.115 55.178,56.076" style="fill:none;stroke:#494848;stroke-width:5;stroke-linecap:round"/> <path id="path1" d="M 61.71,62.611 C 66.977,55.945 70.128,47.531 70.128,38.378 C 70.128,29.161 66.936,20.696 61.609,14.01" style="fill:none;stroke:none;stroke-width:5;stroke-linecap:round"/> </g> </svg></div>');
                 //use this as a template for addding tts for the output box
                 $("#choice-" + currentCharacter + " .character-speech").click(function () {
-                    responsiveVoice.speak(currentCharacter, 'Chinese Female')
+                    responsiveVoice.speak(currentCharacter, 'Chinese Female');
+                    ga('send', {
+                        hitType: 'event',
+                        eventCategory: 'AudioPlayed',
+                        eventAction: $("#chinese-output").val(),
+                        eventLabel: currentCharacter,
+                        eventValue: timer
+                    });
                 });
                 //setTimeout is baked in function, called after 3 seconds
                 function audioDelay() {
@@ -82,6 +96,13 @@ function doneTyping() {
 
                     $("#choice-" + currentCharacter + " .character-translation").click(function () {
                         $("#choice-" + currentCharacter + " .translated-text").removeClass("hidden-asset");
+                        ga('send', {
+                            hitType: 'event',
+                            eventCategory: 'TranslationViewed',
+                            eventAction: $("#chinese-output").val(),
+                            eventLabel: currentCharacter,
+                            eventValue: timer
+                        });
                     });
                 });
 
@@ -137,11 +158,18 @@ function doneTyping() {
                 }
             })
 
-            //When an item is clicked
+            //When a character is clicked for input into text box
             $(".character-text").click(function () {
                 //append character to compilation
                 $('#chinese-output').attr('disabled', false);
                 selectedCharacter = $(this).text();
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Character',
+                    eventAction: $("#chinese-output").val(),
+                    eventLabel: selectedCharacter,
+                    eventValue: timer
+                });
                 //chinnese-output.val used for TTS
                 //keeps the existing characters and adds them
                 $("#chinese-output").val($("#chinese-output").val() + selectedCharacter);
