@@ -21,6 +21,8 @@ $("#chinese-input").focus();
 
 //scope variable here consider javasccript promises
 var timer = null;
+var d = new Date();
+var n = d.getTime();
 $('#chinese-input').keyup(function (e) {
     // ignores arrow keys, list of all keys in case you want to add some more:
     // https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
@@ -49,12 +51,15 @@ function doneTyping() {
         clearTimeout(timeoutImageDelay);
         $("#output-container").empty();
         currentCharacterInput = $("#chinese-input").val().toLowerCase(); //if backend then add security here
+        //sends event data to google analytics Pinyin sent to server and current value of
+        var p = d.getTime();
+        var elapsed = (p-n)/1000;
         ga('send', {
             hitType: 'event',
             eventCategory: 'PinyinSend',
-            eventAction: $("#chinese-output").val(),
-            eventLabel: currentCharacterInput,
-            eventValue: timer
+            eventAction: currentCharacterInput,
+            eventLabel: $("#chinese-output").val(),
+            eventValue: elapsed
         });
         PinyinToChineseRequestURL = 'https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&num=7&text=' + currentCharacterInput;
         //this runs on jquery all the .append and $.ajax is that
@@ -72,12 +77,14 @@ function doneTyping() {
                 //use this as a template for addding tts for the output box
                 $("#choice-" + currentCharacter + " .character-speech").click(function () {
                     responsiveVoice.speak(currentCharacter, 'Chinese Female');
+                    var p = d.getTime();
+                    var elapsed = (p-n)/1000;
                     ga('send', {
                         hitType: 'event',
                         eventCategory: 'AudioPlayed',
-                        eventAction: currentCharacterInput,
-                        eventLabel: currentCharacter,
-                        eventValue: timer
+                        eventAction: currentCharacter,
+                        eventLabel: currentCharacterInput,
+                        eventValue: elapsed
                     });
                 });
                 //setTimeout is baked in function, called after 3 seconds
@@ -96,12 +103,14 @@ function doneTyping() {
 
                     $("#choice-" + currentCharacter + " .character-translation").click(function () {
                         $("#choice-" + currentCharacter + " .translated-text").removeClass("hidden-asset");
+                        var p = d.getTime();
+                        var elapsed = (p-n)/1000;
                         ga('send', {
                             hitType: 'event',
                             eventCategory: 'TranslationViewed',
-                            eventAction: currentCharacterInput,
-                            eventLabel: currentCharacter,
-                            eventValue: timer
+                            eventAction: currentCharacter,
+                            eventLabel: currentCharacterInput,
+                            eventValue: elapsed
                         });
                     });
                 });
@@ -163,12 +172,14 @@ function doneTyping() {
                 //append character to compilation
                 $('#chinese-output').attr('disabled', false);
                 selectedCharacter = $(this).text();
+                var p = d.getTime();
+                var elapsed = (p-n)/1000;
                 ga('send', {
                     hitType: 'event',
-                    eventCategory: 'Character',
-                    eventAction: $("#chinese-output").val(),
-                    eventLabel: selectedCharacter,
-                    eventValue: timer
+                    eventCategory: 'CharacterSelected',
+                    eventAction: selectedCharacter,
+                    eventLabel: $("#chinese-output").val(),
+                    eventValue: elapsed
                 });
                 //chinnese-output.val used for TTS
                 //keeps the existing characters and adds them
