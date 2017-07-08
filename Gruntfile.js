@@ -1,3 +1,4 @@
+//this is a task runner grunt that does some operations , run from commandline so get grunt runs grunt watch for scss and css
 module.exports = function (grunt) {
 	// Project configuration.
 	grunt.initConfig({
